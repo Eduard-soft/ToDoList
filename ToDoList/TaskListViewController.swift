@@ -52,11 +52,18 @@ class TaskListViewController: UITableViewController {
             target: self,
             action: #selector(addNewTask)
         )
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        
         navigationController?.navigationBar.tintColor = .white
     }
     
     @objc private func addNewTask() {
         showAlert(with: "New task", and: "What do you want to do?")
+    }
+    
+    @objc private func editTask() {
+        showAlert(with: "change task", and: "What do you want to change?")
     }
     
     private func fetchData() {
@@ -80,7 +87,7 @@ class TaskListViewController: UITableViewController {
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         alert.addTextField { textField in
-            textField.placeholder = "New Task"
+        textField.placeholder = "New Task"
         }
         present(alert, animated: true)
     }
@@ -96,7 +103,6 @@ class TaskListViewController: UITableViewController {
         if context.hasChanges {
             do {
                 try context.save()
- //               taskList.append(task)
             } catch let error {
             print(error)
             }
