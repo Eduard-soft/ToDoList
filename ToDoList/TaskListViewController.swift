@@ -62,10 +62,6 @@ class TaskListViewController: UITableViewController {
         showAlert(with: "New task", and: "What do you want to do?")
     }
     
-    @objc private func editTask() {
-        showAlert(with: "change task", and: "What do you want to change?")
-    }
-    
     private func fetchData() {
         let fetchRequest = Task.fetchRequest()
 
